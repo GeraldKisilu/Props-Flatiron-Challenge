@@ -4,7 +4,7 @@ import Searchbar from './Components/Searchbar';
 import Entry from './Components/Entry';
 // import TransactionItem from './Components/TransactionItem';
 import Transactions from './Components/Transactions';
-import {useEffect,useState} from 'react';
+import {useState} from 'react';
 
 
 function App() {

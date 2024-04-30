@@ -1,91 +1,94 @@
-import React, { useState } from 'react'
-import './Entry.css'
-import { hasFormSubmit } from '@testing-library/user-event/dist/utils';
-
-
+import React, { useState } from 'react';
+import './Entry.css';
 
 function Transactionbtn() {
-  const [Formdata, setFormdata] = useState({
+  const [formData, setFormData] = useState({
     date: "",
     description: "",
     category: "",
     amount: ""
-  })
-  const [transactions, setTransactions] = useState(Formdata)
+  });
+  const [transactions, setTransactions] = useState([]);
+
   const handleChange = (e) => {
     const { id, value } = e.target;
-    setFormdata({
-      ...FormData,
+    setFormData({
+      ...formData,
       [id]: value
-    })
-  }
+    });
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    setTransactions([...transactions, Formdata])
-  }
+    setTransactions([...transactions, formData]);
+    setFormData({
+      date: "",
+      description: "",
+      category: "",
+      amount: ""
+    }); // Reset form data after submission
+  };
+
   return (
-    <div class='container'>
-      <div class='transaction' onSubmit={handleSubmit}>
+    <div className='container'>
+      <form className='transaction' onSubmit={handleSubmit}>
         <input
           type='date'
           id='date'
-          onchange={handleChange}
-          value={FormData.date}
+          onChange={handleChange}
+          value={formData.date}
         />
         <input
           type='text'
           id='description'
           placeholder='Description'
           onChange={handleChange}
-          value={FormData.description}
+          value={formData.description}
         />
         <input
           type='text'
-          id='description'
+          id='category'
           placeholder='Category'
           onChange={handleChange}
-          value={FormData.category}
+          value={formData.category}
         />
         <input
-          type='text'
-          id='description'
+          type='number'
+          id='amount'
           placeholder='Amount'
           onChange={handleChange}
-          value={FormData.amount}
+          value={formData.amount}
         />
-
-      </div>
-      <div class='button'>
-        <button>Add Transaction</button>
-      </div>
+        <button type="submit">Add Transaction</button>
+      </form>
       <div>
-        <table class="table">
+        <table className="table">
           <thead>
             <tr>
               <th scope="col">Date</th>
               <th scope="col">Description</th>
               <th scope="col">Category</th>
               <th scope="col">Amount</th>
-              {/* <th scope="col">Delete <br/>Transaction</th> */}
             </tr>
           </thead>
           <tbody>
-            {transactions.map(({ id, date, description, category, amount, quantity }) => (
-              <tr key={id}>
-                <td>{date}</td>
-                <td>{description}</td>
-                <td>{category}</td>
-                <td>${amount}</td>
-                <td>{quantity}</td>
-
+            {transactions.map((transaction, index) => (
+              <tr key={index}>
+                <td>{transaction.date}</td>
+                <td>{transaction.description}</td>
+                <td>{transaction.category}</td>
+                <td>${transaction.amount}</td>
               </tr>
             ))}
-
           </tbody>
         </table>
       </div>
     </div>
-  )
+  );
 }
 
-export default Transactionbtn
+export default Transactionbtn;
+
+
+
+
