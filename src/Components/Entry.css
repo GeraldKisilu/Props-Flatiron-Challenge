@@ -1,0 +1,12 @@
+.button{
+    border-radius: none;
+    cursor: pointer;
+    margin-bottom: 1%;
+}
+.button :hover{
+    background-color: blue;
+}
+.transaction{
+    border-radius: none;
+    margin-top: 1%;
+}

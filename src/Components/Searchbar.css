@@ -1,0 +1,6 @@
+.container1{
+    box-shadow: 2px 2px 3px blue;
+    border-radius: none;
+    margin-inline-start:5%;
+    margin-inline-end: 5%;
+}
