@@ -13,7 +13,7 @@ function App() {
     <div className="App">
       <Navbar />
       <Searchbar/>
-      <Entry/>
+      <Entry />
       {/* <TransactionItem/> */}
       <Transactions/>
       
